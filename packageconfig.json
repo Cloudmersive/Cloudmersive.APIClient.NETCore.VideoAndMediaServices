@@ -1,8 +1,8 @@
 ﻿{
 
-  "packageName" : "Cloudmersive.APIClient.NETCore.DocumentAndDataConvert",
-  "packageVersion": "2.1.1",
+  "packageName" : "Cloudmersive.APIClient.NETCore.VideoAndMediaServices",
+  "packageVersion": "2.0.1",
   "netCoreProjectFile": "true",
-  "packageGuid": "be4bc5a5-a1f7-4174-9376-21c0bc7b2001",
+  "packageGuid": "ad7d2416-d604-46f6-923b-14e38df96adf",
   "targetFramework": "v5.0"
 }  
