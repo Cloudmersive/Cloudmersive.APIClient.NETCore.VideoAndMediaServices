@@ -1,7 +1,7 @@
 ﻿{
 
   "packageName" : "Cloudmersive.APIClient.NETCore.VideoAndMediaServices",
-  "packageVersion": "2.0.1",
+  "packageVersion": "2.0.2",
   "netCoreProjectFile": "true",
   "packageGuid": "ad7d2416-d604-46f6-923b-14e38df96adf",
   "targetFramework": "v5.0"

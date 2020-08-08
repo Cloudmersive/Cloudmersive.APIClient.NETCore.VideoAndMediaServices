@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp.Portable;
 using Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client;
+using Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Model;
 
 namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 {
@@ -27,144 +28,192 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// Convert Video to Animated GIF format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
+        /// Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
-        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to 24 frames per second. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <param name="startTime">Optional; Specify the desired starting time of the GIF video in TimeSpan format. (optional)</param>
-        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 seconds. Default is 10 seconds. (optional)</param>
         /// <returns>byte[]</returns>
-        byte[] VideoConvertToGif (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, bool? extendProcessingTime = null, DateTime? startTime = null, DateTime? timeSpan = null);
+        byte[] VideoConvertToGif (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, DateTime? startTime = null, DateTime? timeSpan = null);
 
         /// <summary>
         /// Convert Video to Animated GIF format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
+        /// Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
-        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to 24 frames per second. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <param name="startTime">Optional; Specify the desired starting time of the GIF video in TimeSpan format. (optional)</param>
-        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 seconds. Default is 10 seconds. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> VideoConvertToGifWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, bool? extendProcessingTime = null, DateTime? startTime = null, DateTime? timeSpan = null);
+        ApiResponse<byte[]> VideoConvertToGifWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, DateTime? startTime = null, DateTime? timeSpan = null);
         /// <summary>
         /// Convert Video to MOV format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>byte[]</returns>
-        byte[] VideoConvertToMov (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        byte[] VideoConvertToMov (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
 
         /// <summary>
         /// Convert Video to MOV format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> VideoConvertToMovWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        ApiResponse<byte[]> VideoConvertToMovWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
         /// <summary>
         /// Convert Video to MP4 format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>byte[]</returns>
-        byte[] VideoConvertToMp4 (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        byte[] VideoConvertToMp4 (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
 
         /// <summary>
         /// Convert Video to MP4 format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> VideoConvertToMp4WithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        ApiResponse<byte[]> VideoConvertToMp4WithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
+        /// <summary>
+        /// Convert Video to PNG Still Frames.
+        /// </summary>
+        /// <remarks>
+        /// Automatically detect video file format and convert it to an array of still frame PNG images. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
+        /// <returns>StillFramesResult</returns>
+        StillFramesResult VideoConvertToStillFrames (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null);
+
+        /// <summary>
+        /// Convert Video to PNG Still Frames.
+        /// </summary>
+        /// <remarks>
+        /// Automatically detect video file format and convert it to an array of still frame PNG images. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
+        /// <returns>ApiResponse of StillFramesResult</returns>
+        ApiResponse<StillFramesResult> VideoConvertToStillFramesWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null);
         /// <summary>
         /// Convert Video to WEBM format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>byte[]</returns>
-        byte[] VideoConvertToWebm (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        byte[] VideoConvertToWebm (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
 
         /// <summary>
         /// Convert Video to WEBM format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> VideoConvertToWebmWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        ApiResponse<byte[]> VideoConvertToWebmWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
+        /// <summary>
+        /// Cut a Video to a Shorter Length
+        /// </summary>
+        /// <remarks>
+        /// Cuts a video to the specified start and end times. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="startTime">Optional; Specify the desired starting time of the cut video in TimeSpan format. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the cut video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>byte[]</returns>
+        byte[] VideoCutVideo (System.IO.Stream inputFile = null, string fileUrl = null, DateTime? startTime = null, DateTime? timeSpan = null);
+
+        /// <summary>
+        /// Cut a Video to a Shorter Length
+        /// </summary>
+        /// <remarks>
+        /// Cuts a video to the specified start and end times. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="startTime">Optional; Specify the desired starting time of the cut video in TimeSpan format. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the cut video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        ApiResponse<byte[]> VideoCutVideoWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, DateTime? startTime = null, DateTime? timeSpan = null);
         /// <summary>
         /// Get detailed information about a video or audio file
         /// </summary>
@@ -172,10 +221,10 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// Retrieve detailed information about a video or audio file, including format, dimensions, file size, bit rate, duration and start time. Compatible with many formats, including: AVI, ASF, FLV, GIF, MP4, MPEG/MPG, Matroska/WEBM, MOV, AIFF, ASF, CAF, MP3, MP2, MP1, Ogg, OMG/OMA, and WAV. Uses 1 API call per 10 MB of file size.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <returns>byte[]</returns>
-        byte[] VideoGetInfo (System.IO.Stream inputFile, string fileUrl = null);
+        /// <returns>MediaInformation</returns>
+        MediaInformation VideoGetInfo (System.IO.Stream inputFile = null, string fileUrl = null);
 
         /// <summary>
         /// Get detailed information about a video or audio file
@@ -184,154 +233,320 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// Retrieve detailed information about a video or audio file, including format, dimensions, file size, bit rate, duration and start time. Compatible with many formats, including: AVI, ASF, FLV, GIF, MP4, MPEG/MPG, Matroska/WEBM, MOV, AIFF, ASF, CAF, MP3, MP2, MP1, Ogg, OMG/OMA, and WAV. Uses 1 API call per 10 MB of file size.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <returns>ApiResponse of MediaInformation</returns>
+        ApiResponse<MediaInformation> VideoGetInfoWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null);
+        /// <summary>
+        /// Resizes a Video Preserving the Original Aspect Ratio.
+        /// </summary>
+        /// <remarks>
+        /// Resizes a video, while maintaining the original aspect ratio and encoding. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>byte[]</returns>
+        byte[] VideoResizeVideo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null);
+
+        /// <summary>
+        /// Resizes a Video Preserving the Original Aspect Ratio.
+        /// </summary>
+        /// <remarks>
+        /// Resizes a video, while maintaining the original aspect ratio and encoding. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> VideoGetInfoWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null);
+        ApiResponse<byte[]> VideoResizeVideoWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null);
+        /// <summary>
+        /// Resizes a Video without Preserving Aspect Ratio.
+        /// </summary>
+        /// <remarks>
+        /// Resizes a video without maintaining original aspect ratio, allowing fully customizable dimensions. May cause image skewing. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>byte[]</returns>
+        byte[] VideoResizeVideoSimple (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null);
+
+        /// <summary>
+        /// Resizes a Video without Preserving Aspect Ratio.
+        /// </summary>
+        /// <remarks>
+        /// Resizes a video without maintaining original aspect ratio, allowing fully customizable dimensions. May cause image skewing. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        ApiResponse<byte[]> VideoResizeVideoSimpleWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null);
+        /// <summary>
+        /// Scan a Video for NSFW content.
+        /// </summary>
+        /// <remarks>
+        /// Automatically detect video file format and scan it for Not Safe For Work (NSFW)/Porn/Racy content. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per frame scanned.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
+        /// <returns>NsfwResult</returns>
+        NsfwResult VideoScanForNsfw (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null);
+
+        /// <summary>
+        /// Scan a Video for NSFW content.
+        /// </summary>
+        /// <remarks>
+        /// Automatically detect video file format and scan it for Not Safe For Work (NSFW)/Porn/Racy content. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per frame scanned.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
+        /// <returns>ApiResponse of NsfwResult</returns>
+        ApiResponse<NsfwResult> VideoScanForNsfwWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null);
+        /// <summary>
+        /// Split a Video into Two Shorter Videos
+        /// </summary>
+        /// <remarks>
+        /// Cuts a video into two videos based on the specified start time. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="splitTime">Specify the desired time at which to split the video in TimeSpan format.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the second video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>SplitVideoResult</returns>
+        SplitVideoResult VideoSplitVideo (DateTime? splitTime, System.IO.Stream inputFile = null, string fileUrl = null, DateTime? timeSpan = null);
+
+        /// <summary>
+        /// Split a Video into Two Shorter Videos
+        /// </summary>
+        /// <remarks>
+        /// Cuts a video into two videos based on the specified start time. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="splitTime">Specify the desired time at which to split the video in TimeSpan format.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the second video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>ApiResponse of SplitVideoResult</returns>
+        ApiResponse<SplitVideoResult> VideoSplitVideoWithHttpInfo (DateTime? splitTime, System.IO.Stream inputFile = null, string fileUrl = null, DateTime? timeSpan = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
         /// Convert Video to Animated GIF format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
+        /// Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
-        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to 24 frames per second. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <param name="startTime">Optional; Specify the desired starting time of the GIF video in TimeSpan format. (optional)</param>
-        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 seconds. Default is 10 seconds. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> VideoConvertToGifAsync (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, bool? extendProcessingTime = null, DateTime? startTime = null, DateTime? timeSpan = null);
+        System.Threading.Tasks.Task<byte[]> VideoConvertToGifAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, DateTime? startTime = null, DateTime? timeSpan = null);
 
         /// <summary>
         /// Convert Video to Animated GIF format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
+        /// Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
-        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to 24 frames per second. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <param name="startTime">Optional; Specify the desired starting time of the GIF video in TimeSpan format. (optional)</param>
-        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 seconds. Default is 10 seconds. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToGifAsyncWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, bool? extendProcessingTime = null, DateTime? startTime = null, DateTime? timeSpan = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToGifAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, DateTime? startTime = null, DateTime? timeSpan = null);
         /// <summary>
         /// Convert Video to MOV format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> VideoConvertToMovAsync (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        System.Threading.Tasks.Task<byte[]> VideoConvertToMovAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
 
         /// <summary>
         /// Convert Video to MOV format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToMovAsyncWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToMovAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
         /// <summary>
         /// Convert Video to MP4 format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> VideoConvertToMp4Async (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        System.Threading.Tasks.Task<byte[]> VideoConvertToMp4Async (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
 
         /// <summary>
         /// Convert Video to MP4 format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToMp4AsyncWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToMp4AsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
+        /// <summary>
+        /// Convert Video to PNG Still Frames.
+        /// </summary>
+        /// <remarks>
+        /// Automatically detect video file format and convert it to an array of still frame PNG images. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
+        /// <returns>Task of StillFramesResult</returns>
+        System.Threading.Tasks.Task<StillFramesResult> VideoConvertToStillFramesAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null);
+
+        /// <summary>
+        /// Convert Video to PNG Still Frames.
+        /// </summary>
+        /// <remarks>
+        /// Automatically detect video file format and convert it to an array of still frame PNG images. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
+        /// <returns>Task of ApiResponse (StillFramesResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<StillFramesResult>> VideoConvertToStillFramesAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null);
         /// <summary>
         /// Convert Video to WEBM format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> VideoConvertToWebmAsync (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        System.Threading.Tasks.Task<byte[]> VideoConvertToWebmAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
 
         /// <summary>
         /// Convert Video to WEBM format.
         /// </summary>
         /// <remarks>
-        /// Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToWebmAsyncWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToWebmAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null);
+        /// <summary>
+        /// Cut a Video to a Shorter Length
+        /// </summary>
+        /// <remarks>
+        /// Cuts a video to the specified start and end times. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="startTime">Optional; Specify the desired starting time of the cut video in TimeSpan format. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the cut video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>Task of byte[]</returns>
+        System.Threading.Tasks.Task<byte[]> VideoCutVideoAsync (System.IO.Stream inputFile = null, string fileUrl = null, DateTime? startTime = null, DateTime? timeSpan = null);
+
+        /// <summary>
+        /// Cut a Video to a Shorter Length
+        /// </summary>
+        /// <remarks>
+        /// Cuts a video to the specified start and end times. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="startTime">Optional; Specify the desired starting time of the cut video in TimeSpan format. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the cut video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoCutVideoAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, DateTime? startTime = null, DateTime? timeSpan = null);
         /// <summary>
         /// Get detailed information about a video or audio file
         /// </summary>
@@ -339,10 +554,10 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// Retrieve detailed information about a video or audio file, including format, dimensions, file size, bit rate, duration and start time. Compatible with many formats, including: AVI, ASF, FLV, GIF, MP4, MPEG/MPG, Matroska/WEBM, MOV, AIFF, ASF, CAF, MP3, MP2, MP1, Ogg, OMG/OMA, and WAV. Uses 1 API call per 10 MB of file size.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> VideoGetInfoAsync (System.IO.Stream inputFile, string fileUrl = null);
+        /// <returns>Task of MediaInformation</returns>
+        System.Threading.Tasks.Task<MediaInformation> VideoGetInfoAsync (System.IO.Stream inputFile = null, string fileUrl = null);
 
         /// <summary>
         /// Get detailed information about a video or audio file
@@ -351,10 +566,128 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// Retrieve detailed information about a video or audio file, including format, dimensions, file size, bit rate, duration and start time. Compatible with many formats, including: AVI, ASF, FLV, GIF, MP4, MPEG/MPG, Matroska/WEBM, MOV, AIFF, ASF, CAF, MP3, MP2, MP1, Ogg, OMG/OMA, and WAV. Uses 1 API call per 10 MB of file size.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <returns>Task of ApiResponse (MediaInformation)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MediaInformation>> VideoGetInfoAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null);
+        /// <summary>
+        /// Resizes a Video Preserving the Original Aspect Ratio.
+        /// </summary>
+        /// <remarks>
+        /// Resizes a video, while maintaining the original aspect ratio and encoding. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>Task of byte[]</returns>
+        System.Threading.Tasks.Task<byte[]> VideoResizeVideoAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null);
+
+        /// <summary>
+        /// Resizes a Video Preserving the Original Aspect Ratio.
+        /// </summary>
+        /// <remarks>
+        /// Resizes a video, while maintaining the original aspect ratio and encoding. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoGetInfoAsyncWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoResizeVideoAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null);
+        /// <summary>
+        /// Resizes a Video without Preserving Aspect Ratio.
+        /// </summary>
+        /// <remarks>
+        /// Resizes a video without maintaining original aspect ratio, allowing fully customizable dimensions. May cause image skewing. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>Task of byte[]</returns>
+        System.Threading.Tasks.Task<byte[]> VideoResizeVideoSimpleAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null);
+
+        /// <summary>
+        /// Resizes a Video without Preserving Aspect Ratio.
+        /// </summary>
+        /// <remarks>
+        /// Resizes a video without maintaining original aspect ratio, allowing fully customizable dimensions. May cause image skewing. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoResizeVideoSimpleAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null);
+        /// <summary>
+        /// Scan a Video for NSFW content.
+        /// </summary>
+        /// <remarks>
+        /// Automatically detect video file format and scan it for Not Safe For Work (NSFW)/Porn/Racy content. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per frame scanned.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
+        /// <returns>Task of NsfwResult</returns>
+        System.Threading.Tasks.Task<NsfwResult> VideoScanForNsfwAsync (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null);
+
+        /// <summary>
+        /// Scan a Video for NSFW content.
+        /// </summary>
+        /// <remarks>
+        /// Automatically detect video file format and scan it for Not Safe For Work (NSFW)/Porn/Racy content. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per frame scanned.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
+        /// <returns>Task of ApiResponse (NsfwResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NsfwResult>> VideoScanForNsfwAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null);
+        /// <summary>
+        /// Split a Video into Two Shorter Videos
+        /// </summary>
+        /// <remarks>
+        /// Cuts a video into two videos based on the specified start time. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="splitTime">Specify the desired time at which to split the video in TimeSpan format.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the second video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>Task of SplitVideoResult</returns>
+        System.Threading.Tasks.Task<SplitVideoResult> VideoSplitVideoAsync (DateTime? splitTime, System.IO.Stream inputFile = null, string fileUrl = null, DateTime? timeSpan = null);
+
+        /// <summary>
+        /// Split a Video into Two Shorter Videos
+        /// </summary>
+        /// <remarks>
+        /// Cuts a video into two videos based on the specified start time. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </remarks>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="splitTime">Specify the desired time at which to split the video in TimeSpan format.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the second video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>Task of ApiResponse (SplitVideoResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SplitVideoResult>> VideoSplitVideoAsyncWithHttpInfo (DateTime? splitTime, System.IO.Stream inputFile = null, string fileUrl = null, DateTime? timeSpan = null);
         #endregion Asynchronous Operations
     }
 
@@ -456,44 +789,39 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         }
 
         /// <summary>
-        /// Convert Video to Animated GIF format. Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
+        /// Convert Video to Animated GIF format. Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
-        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to 24 frames per second. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <param name="startTime">Optional; Specify the desired starting time of the GIF video in TimeSpan format. (optional)</param>
-        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 seconds. Default is 10 seconds. (optional)</param>
         /// <returns>byte[]</returns>
-        public byte[] VideoConvertToGif (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, bool? extendProcessingTime = null, DateTime? startTime = null, DateTime? timeSpan = null)
+        public byte[] VideoConvertToGif (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, DateTime? startTime = null, DateTime? timeSpan = null)
         {
-             ApiResponse<byte[]> localVarResponse = VideoConvertToGifWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, extendProcessingTime, startTime, timeSpan);
+             ApiResponse<byte[]> localVarResponse = VideoConvertToGifWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, startTime, timeSpan);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Convert Video to Animated GIF format. Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
+        /// Convert Video to Animated GIF format. Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
-        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to 24 frames per second. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <param name="startTime">Optional; Specify the desired starting time of the GIF video in TimeSpan format. (optional)</param>
-        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 seconds. Default is 10 seconds. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > VideoConvertToGifWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, bool? extendProcessingTime = null, DateTime? startTime = null, DateTime? timeSpan = null)
+        public ApiResponse< byte[] > VideoConvertToGifWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, DateTime? startTime = null, DateTime? timeSpan = null)
         {
-            // verify the required parameter 'inputFile' is set
-            if (inputFile == null)
-                throw new ApiException(400, "Missing required parameter 'inputFile' when calling VideoApi->VideoConvertToGif");
 
             var localVarPath = "./video/convert/to/gif";
             var localVarPathParams = new Dictionary<String, String>();
@@ -525,7 +853,6 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
             if (maxHeight != null) localVarHeaderParams.Add("maxHeight", this.Configuration.ApiClient.ParameterToString(maxHeight)); // header parameter
             if (preserveAspectRatio != null) localVarHeaderParams.Add("preserveAspectRatio", this.Configuration.ApiClient.ParameterToString(preserveAspectRatio)); // header parameter
             if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
-            if (extendProcessingTime != null) localVarHeaderParams.Add("extendProcessingTime", this.Configuration.ApiClient.ParameterToString(extendProcessingTime)); // header parameter
             if (startTime != null) localVarHeaderParams.Add("startTime", this.Configuration.ApiClient.ParameterToString(startTime)); // header parameter
             if (timeSpan != null) localVarHeaderParams.Add("timeSpan", this.Configuration.ApiClient.ParameterToString(timeSpan)); // header parameter
             if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
@@ -555,45 +882,40 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         }
 
         /// <summary>
-        /// Convert Video to Animated GIF format. Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
+        /// Convert Video to Animated GIF format. Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
-        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to 24 frames per second. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <param name="startTime">Optional; Specify the desired starting time of the GIF video in TimeSpan format. (optional)</param>
-        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 seconds. Default is 10 seconds. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> VideoConvertToGifAsync (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, bool? extendProcessingTime = null, DateTime? startTime = null, DateTime? timeSpan = null)
+        public async System.Threading.Tasks.Task<byte[]> VideoConvertToGifAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, DateTime? startTime = null, DateTime? timeSpan = null)
         {
-             ApiResponse<byte[]> localVarResponse = await VideoConvertToGifAsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, extendProcessingTime, startTime, timeSpan);
+             ApiResponse<byte[]> localVarResponse = await VideoConvertToGifAsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, startTime, timeSpan);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Convert Video to Animated GIF format. Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
+        /// Convert Video to Animated GIF format. Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
-        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to 24 frames per second. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <param name="startTime">Optional; Specify the desired starting time of the GIF video in TimeSpan format. (optional)</param>
-        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 seconds. Default is 10 seconds. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToGifAsyncWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, bool? extendProcessingTime = null, DateTime? startTime = null, DateTime? timeSpan = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToGifAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, DateTime? startTime = null, DateTime? timeSpan = null)
         {
-            // verify the required parameter 'inputFile' is set
-            if (inputFile == null)
-                throw new ApiException(400, "Missing required parameter 'inputFile' when calling VideoApi->VideoConvertToGif");
 
             var localVarPath = "./video/convert/to/gif";
             var localVarPathParams = new Dictionary<String, String>();
@@ -625,7 +947,6 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
             if (maxHeight != null) localVarHeaderParams.Add("maxHeight", this.Configuration.ApiClient.ParameterToString(maxHeight)); // header parameter
             if (preserveAspectRatio != null) localVarHeaderParams.Add("preserveAspectRatio", this.Configuration.ApiClient.ParameterToString(preserveAspectRatio)); // header parameter
             if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
-            if (extendProcessingTime != null) localVarHeaderParams.Add("extendProcessingTime", this.Configuration.ApiClient.ParameterToString(extendProcessingTime)); // header parameter
             if (startTime != null) localVarHeaderParams.Add("startTime", this.Configuration.ApiClient.ParameterToString(startTime)); // header parameter
             if (timeSpan != null) localVarHeaderParams.Add("timeSpan", this.Configuration.ApiClient.ParameterToString(timeSpan)); // header parameter
             if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
@@ -655,42 +976,37 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         }
 
         /// <summary>
-        /// Convert Video to MOV format. Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to MOV format. Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>byte[]</returns>
-        public byte[] VideoConvertToMov (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        public byte[] VideoConvertToMov (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-             ApiResponse<byte[]> localVarResponse = VideoConvertToMovWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality, extendProcessingTime);
+             ApiResponse<byte[]> localVarResponse = VideoConvertToMovWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Convert Video to MOV format. Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to MOV format. Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > VideoConvertToMovWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        public ApiResponse< byte[] > VideoConvertToMovWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-            // verify the required parameter 'inputFile' is set
-            if (inputFile == null)
-                throw new ApiException(400, "Missing required parameter 'inputFile' when calling VideoApi->VideoConvertToMov");
 
             var localVarPath = "./video/convert/to/mov";
             var localVarPathParams = new Dictionary<String, String>();
@@ -723,7 +1039,6 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
             if (preserveAspectRatio != null) localVarHeaderParams.Add("preserveAspectRatio", this.Configuration.ApiClient.ParameterToString(preserveAspectRatio)); // header parameter
             if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
             if (quality != null) localVarHeaderParams.Add("quality", this.Configuration.ApiClient.ParameterToString(quality)); // header parameter
-            if (extendProcessingTime != null) localVarHeaderParams.Add("extendProcessingTime", this.Configuration.ApiClient.ParameterToString(extendProcessingTime)); // header parameter
             if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
 
             // authentication (Apikey) required
@@ -751,43 +1066,38 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         }
 
         /// <summary>
-        /// Convert Video to MOV format. Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to MOV format. Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> VideoConvertToMovAsync (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        public async System.Threading.Tasks.Task<byte[]> VideoConvertToMovAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-             ApiResponse<byte[]> localVarResponse = await VideoConvertToMovAsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality, extendProcessingTime);
+             ApiResponse<byte[]> localVarResponse = await VideoConvertToMovAsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Convert Video to MOV format. Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to MOV format. Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToMovAsyncWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToMovAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-            // verify the required parameter 'inputFile' is set
-            if (inputFile == null)
-                throw new ApiException(400, "Missing required parameter 'inputFile' when calling VideoApi->VideoConvertToMov");
 
             var localVarPath = "./video/convert/to/mov";
             var localVarPathParams = new Dictionary<String, String>();
@@ -820,7 +1130,6 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
             if (preserveAspectRatio != null) localVarHeaderParams.Add("preserveAspectRatio", this.Configuration.ApiClient.ParameterToString(preserveAspectRatio)); // header parameter
             if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
             if (quality != null) localVarHeaderParams.Add("quality", this.Configuration.ApiClient.ParameterToString(quality)); // header parameter
-            if (extendProcessingTime != null) localVarHeaderParams.Add("extendProcessingTime", this.Configuration.ApiClient.ParameterToString(extendProcessingTime)); // header parameter
             if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
 
             // authentication (Apikey) required
@@ -848,42 +1157,37 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         }
 
         /// <summary>
-        /// Convert Video to MP4 format. Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to MP4 format. Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>byte[]</returns>
-        public byte[] VideoConvertToMp4 (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        public byte[] VideoConvertToMp4 (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-             ApiResponse<byte[]> localVarResponse = VideoConvertToMp4WithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality, extendProcessingTime);
+             ApiResponse<byte[]> localVarResponse = VideoConvertToMp4WithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Convert Video to MP4 format. Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to MP4 format. Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > VideoConvertToMp4WithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        public ApiResponse< byte[] > VideoConvertToMp4WithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-            // verify the required parameter 'inputFile' is set
-            if (inputFile == null)
-                throw new ApiException(400, "Missing required parameter 'inputFile' when calling VideoApi->VideoConvertToMp4");
 
             var localVarPath = "./video/convert/to/mp4";
             var localVarPathParams = new Dictionary<String, String>();
@@ -916,7 +1220,6 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
             if (preserveAspectRatio != null) localVarHeaderParams.Add("preserveAspectRatio", this.Configuration.ApiClient.ParameterToString(preserveAspectRatio)); // header parameter
             if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
             if (quality != null) localVarHeaderParams.Add("quality", this.Configuration.ApiClient.ParameterToString(quality)); // header parameter
-            if (extendProcessingTime != null) localVarHeaderParams.Add("extendProcessingTime", this.Configuration.ApiClient.ParameterToString(extendProcessingTime)); // header parameter
             if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
 
             // authentication (Apikey) required
@@ -944,43 +1247,38 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         }
 
         /// <summary>
-        /// Convert Video to MP4 format. Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to MP4 format. Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> VideoConvertToMp4Async (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        public async System.Threading.Tasks.Task<byte[]> VideoConvertToMp4Async (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-             ApiResponse<byte[]> localVarResponse = await VideoConvertToMp4AsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality, extendProcessingTime);
+             ApiResponse<byte[]> localVarResponse = await VideoConvertToMp4AsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Convert Video to MP4 format. Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to MP4 format. Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToMp4AsyncWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToMp4AsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-            // verify the required parameter 'inputFile' is set
-            if (inputFile == null)
-                throw new ApiException(400, "Missing required parameter 'inputFile' when calling VideoApi->VideoConvertToMp4");
 
             var localVarPath = "./video/convert/to/mp4";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1013,7 +1311,6 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
             if (preserveAspectRatio != null) localVarHeaderParams.Add("preserveAspectRatio", this.Configuration.ApiClient.ParameterToString(preserveAspectRatio)); // header parameter
             if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
             if (quality != null) localVarHeaderParams.Add("quality", this.Configuration.ApiClient.ParameterToString(quality)); // header parameter
-            if (extendProcessingTime != null) localVarHeaderParams.Add("extendProcessingTime", this.Configuration.ApiClient.ParameterToString(extendProcessingTime)); // header parameter
             if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
 
             // authentication (Apikey) required
@@ -1041,42 +1338,206 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         }
 
         /// <summary>
-        /// Convert Video to WEBM format. Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to PNG Still Frames. Automatically detect video file format and convert it to an array of still frame PNG images. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
-        /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
-        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
-        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
-        /// <returns>byte[]</returns>
-        public byte[] VideoConvertToWebm (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
+        /// <returns>StillFramesResult</returns>
+        public StillFramesResult VideoConvertToStillFrames (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null)
         {
-             ApiResponse<byte[]> localVarResponse = VideoConvertToWebmWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality, extendProcessingTime);
+             ApiResponse<StillFramesResult> localVarResponse = VideoConvertToStillFramesWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, framesPerSecond);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Convert Video to WEBM format. Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to PNG Still Frames. Automatically detect video file format and convert it to an array of still frame PNG images. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
+        /// <returns>ApiResponse of StillFramesResult</returns>
+        public ApiResponse< StillFramesResult > VideoConvertToStillFramesWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null)
+        {
+
+            var localVarPath = "./video/convert/to/still-frames";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (maxWidth != null) localVarHeaderParams.Add("maxWidth", this.Configuration.ApiClient.ParameterToString(maxWidth)); // header parameter
+            if (maxHeight != null) localVarHeaderParams.Add("maxHeight", this.Configuration.ApiClient.ParameterToString(maxHeight)); // header parameter
+            if (framesPerSecond != null) localVarHeaderParams.Add("framesPerSecond", this.Configuration.ApiClient.ParameterToString(framesPerSecond)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoConvertToStillFrames", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<StillFramesResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (StillFramesResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(StillFramesResult)));
+        }
+
+        /// <summary>
+        /// Convert Video to PNG Still Frames. Automatically detect video file format and convert it to an array of still frame PNG images. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
+        /// <returns>Task of StillFramesResult</returns>
+        public async System.Threading.Tasks.Task<StillFramesResult> VideoConvertToStillFramesAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null)
+        {
+             ApiResponse<StillFramesResult> localVarResponse = await VideoConvertToStillFramesAsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, framesPerSecond);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Convert Video to PNG Still Frames. Automatically detect video file format and convert it to an array of still frame PNG images. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
+        /// <returns>Task of ApiResponse (StillFramesResult)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<StillFramesResult>> VideoConvertToStillFramesAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null)
+        {
+
+            var localVarPath = "./video/convert/to/still-frames";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (maxWidth != null) localVarHeaderParams.Add("maxWidth", this.Configuration.ApiClient.ParameterToString(maxWidth)); // header parameter
+            if (maxHeight != null) localVarHeaderParams.Add("maxHeight", this.Configuration.ApiClient.ParameterToString(maxHeight)); // header parameter
+            if (framesPerSecond != null) localVarHeaderParams.Add("framesPerSecond", this.Configuration.ApiClient.ParameterToString(framesPerSecond)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoConvertToStillFrames", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<StillFramesResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (StillFramesResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(StillFramesResult)));
+        }
+
+        /// <summary>
+        /// Convert Video to WEBM format. Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
-        /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > VideoConvertToWebmWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        /// <returns>byte[]</returns>
+        public byte[] VideoConvertToWebm (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-            // verify the required parameter 'inputFile' is set
-            if (inputFile == null)
-                throw new ApiException(400, "Missing required parameter 'inputFile' when calling VideoApi->VideoConvertToWebm");
+             ApiResponse<byte[]> localVarResponse = VideoConvertToWebmWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Convert Video to WEBM format. Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        public ApiResponse< byte[] > VideoConvertToWebmWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
+        {
 
             var localVarPath = "./video/convert/to/webm";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1109,7 +1570,6 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
             if (preserveAspectRatio != null) localVarHeaderParams.Add("preserveAspectRatio", this.Configuration.ApiClient.ParameterToString(preserveAspectRatio)); // header parameter
             if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
             if (quality != null) localVarHeaderParams.Add("quality", this.Configuration.ApiClient.ParameterToString(quality)); // header parameter
-            if (extendProcessingTime != null) localVarHeaderParams.Add("extendProcessingTime", this.Configuration.ApiClient.ParameterToString(extendProcessingTime)); // header parameter
             if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
 
             // authentication (Apikey) required
@@ -1137,43 +1597,38 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         }
 
         /// <summary>
-        /// Convert Video to WEBM format. Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to WEBM format. Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> VideoConvertToWebmAsync (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        public async System.Threading.Tasks.Task<byte[]> VideoConvertToWebmAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-             ApiResponse<byte[]> localVarResponse = await VideoConvertToWebmAsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality, extendProcessingTime);
+             ApiResponse<byte[]> localVarResponse = await VideoConvertToWebmAsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, quality);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Convert Video to WEBM format. Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
+        /// Convert Video to WEBM format. Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="preserveAspectRatio">Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional)</param>
         /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
         /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
-        /// <param name="extendProcessingTime">Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToWebmAsyncWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null, bool? extendProcessingTime = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoConvertToWebmAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, bool? preserveAspectRatio = null, int? frameRate = null, int? quality = null)
         {
-            // verify the required parameter 'inputFile' is set
-            if (inputFile == null)
-                throw new ApiException(400, "Missing required parameter 'inputFile' when calling VideoApi->VideoConvertToWebm");
 
             var localVarPath = "./video/convert/to/webm";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1206,7 +1661,6 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
             if (preserveAspectRatio != null) localVarHeaderParams.Add("preserveAspectRatio", this.Configuration.ApiClient.ParameterToString(preserveAspectRatio)); // header parameter
             if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
             if (quality != null) localVarHeaderParams.Add("quality", this.Configuration.ApiClient.ParameterToString(quality)); // header parameter
-            if (extendProcessingTime != null) localVarHeaderParams.Add("extendProcessingTime", this.Configuration.ApiClient.ParameterToString(extendProcessingTime)); // header parameter
             if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
 
             // authentication (Apikey) required
@@ -1234,15 +1688,178 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         }
 
         /// <summary>
+        /// Cut a Video to a Shorter Length Cuts a video to the specified start and end times. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="startTime">Optional; Specify the desired starting time of the cut video in TimeSpan format. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the cut video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>byte[]</returns>
+        public byte[] VideoCutVideo (System.IO.Stream inputFile = null, string fileUrl = null, DateTime? startTime = null, DateTime? timeSpan = null)
+        {
+             ApiResponse<byte[]> localVarResponse = VideoCutVideoWithHttpInfo(inputFile, fileUrl, startTime, timeSpan);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Cut a Video to a Shorter Length Cuts a video to the specified start and end times. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="startTime">Optional; Specify the desired starting time of the cut video in TimeSpan format. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the cut video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        public ApiResponse< byte[] > VideoCutVideoWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, DateTime? startTime = null, DateTime? timeSpan = null)
+        {
+
+            var localVarPath = "./video/cut";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (startTime != null) localVarHeaderParams.Add("startTime", this.Configuration.ApiClient.ParameterToString(startTime)); // header parameter
+            if (timeSpan != null) localVarHeaderParams.Add("timeSpan", this.Configuration.ApiClient.ParameterToString(timeSpan)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoCutVideo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+        }
+
+        /// <summary>
+        /// Cut a Video to a Shorter Length Cuts a video to the specified start and end times. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="startTime">Optional; Specify the desired starting time of the cut video in TimeSpan format. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the cut video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>Task of byte[]</returns>
+        public async System.Threading.Tasks.Task<byte[]> VideoCutVideoAsync (System.IO.Stream inputFile = null, string fileUrl = null, DateTime? startTime = null, DateTime? timeSpan = null)
+        {
+             ApiResponse<byte[]> localVarResponse = await VideoCutVideoAsyncWithHttpInfo(inputFile, fileUrl, startTime, timeSpan);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Cut a Video to a Shorter Length Cuts a video to the specified start and end times. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="startTime">Optional; Specify the desired starting time of the cut video in TimeSpan format. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the cut video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoCutVideoAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, DateTime? startTime = null, DateTime? timeSpan = null)
+        {
+
+            var localVarPath = "./video/cut";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (startTime != null) localVarHeaderParams.Add("startTime", this.Configuration.ApiClient.ParameterToString(startTime)); // header parameter
+            if (timeSpan != null) localVarHeaderParams.Add("timeSpan", this.Configuration.ApiClient.ParameterToString(timeSpan)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoCutVideo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+        }
+
+        /// <summary>
         /// Get detailed information about a video or audio file Retrieve detailed information about a video or audio file, including format, dimensions, file size, bit rate, duration and start time. Compatible with many formats, including: AVI, ASF, FLV, GIF, MP4, MPEG/MPG, Matroska/WEBM, MOV, AIFF, ASF, CAF, MP3, MP2, MP1, Ogg, OMG/OMA, and WAV. Uses 1 API call per 10 MB of file size.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <returns>byte[]</returns>
-        public byte[] VideoGetInfo (System.IO.Stream inputFile, string fileUrl = null)
+        /// <returns>MediaInformation</returns>
+        public MediaInformation VideoGetInfo (System.IO.Stream inputFile = null, string fileUrl = null)
         {
-             ApiResponse<byte[]> localVarResponse = VideoGetInfoWithHttpInfo(inputFile, fileUrl);
+             ApiResponse<MediaInformation> localVarResponse = VideoGetInfoWithHttpInfo(inputFile, fileUrl);
              return localVarResponse.Data;
         }
 
@@ -1250,14 +1867,11 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// Get detailed information about a video or audio file Retrieve detailed information about a video or audio file, including format, dimensions, file size, bit rate, duration and start time. Compatible with many formats, including: AVI, ASF, FLV, GIF, MP4, MPEG/MPG, Matroska/WEBM, MOV, AIFF, ASF, CAF, MP3, MP2, MP1, Ogg, OMG/OMA, and WAV. Uses 1 API call per 10 MB of file size.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > VideoGetInfoWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null)
+        /// <returns>ApiResponse of MediaInformation</returns>
+        public ApiResponse< MediaInformation > VideoGetInfoWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null)
         {
-            // verify the required parameter 'inputFile' is set
-            if (inputFile == null)
-                throw new ApiException(400, "Missing required parameter 'inputFile' when calling VideoApi->VideoGetInfo");
 
             var localVarPath = "./video/convert/get-info";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1306,21 +1920,21 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<byte[]>(localVarStatusCode,
+            return new ApiResponse<MediaInformation>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+                (MediaInformation) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInformation)));
         }
 
         /// <summary>
         /// Get detailed information about a video or audio file Retrieve detailed information about a video or audio file, including format, dimensions, file size, bit rate, duration and start time. Compatible with many formats, including: AVI, ASF, FLV, GIF, MP4, MPEG/MPG, Matroska/WEBM, MOV, AIFF, ASF, CAF, MP3, MP2, MP1, Ogg, OMG/OMA, and WAV. Uses 1 API call per 10 MB of file size.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> VideoGetInfoAsync (System.IO.Stream inputFile, string fileUrl = null)
+        /// <returns>Task of MediaInformation</returns>
+        public async System.Threading.Tasks.Task<MediaInformation> VideoGetInfoAsync (System.IO.Stream inputFile = null, string fileUrl = null)
         {
-             ApiResponse<byte[]> localVarResponse = await VideoGetInfoAsyncWithHttpInfo(inputFile, fileUrl);
+             ApiResponse<MediaInformation> localVarResponse = await VideoGetInfoAsyncWithHttpInfo(inputFile, fileUrl);
              return localVarResponse.Data;
 
         }
@@ -1329,14 +1943,11 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// Get detailed information about a video or audio file Retrieve detailed information about a video or audio file, including format, dimensions, file size, bit rate, duration and start time. Compatible with many formats, including: AVI, ASF, FLV, GIF, MP4, MPEG/MPG, Matroska/WEBM, MOV, AIFF, ASF, CAF, MP3, MP2, MP1, Ogg, OMG/OMA, and WAV. Uses 1 API call per 10 MB of file size.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="inputFile">Input file to perform the operation on.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
         /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoGetInfoAsyncWithHttpInfo (System.IO.Stream inputFile, string fileUrl = null)
+        /// <returns>Task of ApiResponse (MediaInformation)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MediaInformation>> VideoGetInfoAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null)
         {
-            // verify the required parameter 'inputFile' is set
-            if (inputFile == null)
-                throw new ApiException(400, "Missing required parameter 'inputFile' when calling VideoApi->VideoGetInfo");
 
             var localVarPath = "./video/convert/get-info";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1385,9 +1996,697 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
                 if (exception != null) throw exception;
             }
 
+            return new ApiResponse<MediaInformation>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (MediaInformation) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInformation)));
+        }
+
+        /// <summary>
+        /// Resizes a Video Preserving the Original Aspect Ratio. Resizes a video, while maintaining the original aspect ratio and encoding. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>byte[]</returns>
+        public byte[] VideoResizeVideo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null)
+        {
+             ApiResponse<byte[]> localVarResponse = VideoResizeVideoWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, frameRate, quality, extension);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Resizes a Video Preserving the Original Aspect Ratio. Resizes a video, while maintaining the original aspect ratio and encoding. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        public ApiResponse< byte[] > VideoResizeVideoWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null)
+        {
+
+            var localVarPath = "./video/resize/preserveAspectRatio";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (maxWidth != null) localVarHeaderParams.Add("maxWidth", this.Configuration.ApiClient.ParameterToString(maxWidth)); // header parameter
+            if (maxHeight != null) localVarHeaderParams.Add("maxHeight", this.Configuration.ApiClient.ParameterToString(maxHeight)); // header parameter
+            if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
+            if (quality != null) localVarHeaderParams.Add("quality", this.Configuration.ApiClient.ParameterToString(quality)); // header parameter
+            if (extension != null) localVarHeaderParams.Add("extension", this.Configuration.ApiClient.ParameterToString(extension)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoResizeVideo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
             return new ApiResponse<byte[]>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+        }
+
+        /// <summary>
+        /// Resizes a Video Preserving the Original Aspect Ratio. Resizes a video, while maintaining the original aspect ratio and encoding. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>Task of byte[]</returns>
+        public async System.Threading.Tasks.Task<byte[]> VideoResizeVideoAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null)
+        {
+             ApiResponse<byte[]> localVarResponse = await VideoResizeVideoAsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, frameRate, quality, extension);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Resizes a Video Preserving the Original Aspect Ratio. Resizes a video, while maintaining the original aspect ratio and encoding. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoResizeVideoAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null)
+        {
+
+            var localVarPath = "./video/resize/preserveAspectRatio";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (maxWidth != null) localVarHeaderParams.Add("maxWidth", this.Configuration.ApiClient.ParameterToString(maxWidth)); // header parameter
+            if (maxHeight != null) localVarHeaderParams.Add("maxHeight", this.Configuration.ApiClient.ParameterToString(maxHeight)); // header parameter
+            if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
+            if (quality != null) localVarHeaderParams.Add("quality", this.Configuration.ApiClient.ParameterToString(quality)); // header parameter
+            if (extension != null) localVarHeaderParams.Add("extension", this.Configuration.ApiClient.ParameterToString(extension)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoResizeVideo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+        }
+
+        /// <summary>
+        /// Resizes a Video without Preserving Aspect Ratio. Resizes a video without maintaining original aspect ratio, allowing fully customizable dimensions. May cause image skewing. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>byte[]</returns>
+        public byte[] VideoResizeVideoSimple (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null)
+        {
+             ApiResponse<byte[]> localVarResponse = VideoResizeVideoSimpleWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, frameRate, quality, extension);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Resizes a Video without Preserving Aspect Ratio. Resizes a video without maintaining original aspect ratio, allowing fully customizable dimensions. May cause image skewing. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        public ApiResponse< byte[] > VideoResizeVideoSimpleWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null)
+        {
+
+            var localVarPath = "./video/resize/target";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (maxWidth != null) localVarHeaderParams.Add("maxWidth", this.Configuration.ApiClient.ParameterToString(maxWidth)); // header parameter
+            if (maxHeight != null) localVarHeaderParams.Add("maxHeight", this.Configuration.ApiClient.ParameterToString(maxHeight)); // header parameter
+            if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
+            if (quality != null) localVarHeaderParams.Add("quality", this.Configuration.ApiClient.ParameterToString(quality)); // header parameter
+            if (extension != null) localVarHeaderParams.Add("extension", this.Configuration.ApiClient.ParameterToString(extension)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoResizeVideoSimple", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+        }
+
+        /// <summary>
+        /// Resizes a Video without Preserving Aspect Ratio. Resizes a video without maintaining original aspect ratio, allowing fully customizable dimensions. May cause image skewing. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>Task of byte[]</returns>
+        public async System.Threading.Tasks.Task<byte[]> VideoResizeVideoSimpleAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null)
+        {
+             ApiResponse<byte[]> localVarResponse = await VideoResizeVideoSimpleAsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, frameRate, quality, extension);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Resizes a Video without Preserving Aspect Ratio. Resizes a video without maintaining original aspect ratio, allowing fully customizable dimensions. May cause image skewing. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="maxWidth">Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional)</param>
+        /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
+        /// <param name="frameRate">Optional; Specify the frame rate of the output video. Defaults to original video frame rate. (optional)</param>
+        /// <param name="quality">Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50. (optional)</param>
+        /// <param name="extension">Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output. (optional)</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> VideoResizeVideoSimpleAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, int? frameRate = null, int? quality = null, string extension = null)
+        {
+
+            var localVarPath = "./video/resize/target";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (maxWidth != null) localVarHeaderParams.Add("maxWidth", this.Configuration.ApiClient.ParameterToString(maxWidth)); // header parameter
+            if (maxHeight != null) localVarHeaderParams.Add("maxHeight", this.Configuration.ApiClient.ParameterToString(maxHeight)); // header parameter
+            if (frameRate != null) localVarHeaderParams.Add("frameRate", this.Configuration.ApiClient.ParameterToString(frameRate)); // header parameter
+            if (quality != null) localVarHeaderParams.Add("quality", this.Configuration.ApiClient.ParameterToString(quality)); // header parameter
+            if (extension != null) localVarHeaderParams.Add("extension", this.Configuration.ApiClient.ParameterToString(extension)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoResizeVideoSimple", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+        }
+
+        /// <summary>
+        /// Scan a Video for NSFW content. Automatically detect video file format and scan it for Not Safe For Work (NSFW)/Porn/Racy content. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per frame scanned.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
+        /// <returns>NsfwResult</returns>
+        public NsfwResult VideoScanForNsfw (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null)
+        {
+             ApiResponse<NsfwResult> localVarResponse = VideoScanForNsfwWithHttpInfo(inputFile, fileUrl, framesPerSecond);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Scan a Video for NSFW content. Automatically detect video file format and scan it for Not Safe For Work (NSFW)/Porn/Racy content. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per frame scanned.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
+        /// <returns>ApiResponse of NsfwResult</returns>
+        public ApiResponse< NsfwResult > VideoScanForNsfwWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null)
+        {
+
+            var localVarPath = "./video/scan/nsfw";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (framesPerSecond != null) localVarHeaderParams.Add("framesPerSecond", this.Configuration.ApiClient.ParameterToString(framesPerSecond)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoScanForNsfw", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<NsfwResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (NsfwResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NsfwResult)));
+        }
+
+        /// <summary>
+        /// Scan a Video for NSFW content. Automatically detect video file format and scan it for Not Safe For Work (NSFW)/Porn/Racy content. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per frame scanned.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
+        /// <returns>Task of NsfwResult</returns>
+        public async System.Threading.Tasks.Task<NsfwResult> VideoScanForNsfwAsync (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null)
+        {
+             ApiResponse<NsfwResult> localVarResponse = await VideoScanForNsfwAsyncWithHttpInfo(inputFile, fileUrl, framesPerSecond);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Scan a Video for NSFW content. Automatically detect video file format and scan it for Not Safe For Work (NSFW)/Porn/Racy content. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per frame scanned.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
+        /// <returns>Task of ApiResponse (NsfwResult)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<NsfwResult>> VideoScanForNsfwAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null)
+        {
+
+            var localVarPath = "./video/scan/nsfw";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (framesPerSecond != null) localVarHeaderParams.Add("framesPerSecond", this.Configuration.ApiClient.ParameterToString(framesPerSecond)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoScanForNsfw", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<NsfwResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (NsfwResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NsfwResult)));
+        }
+
+        /// <summary>
+        /// Split a Video into Two Shorter Videos Cuts a video into two videos based on the specified start time. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="splitTime">Specify the desired time at which to split the video in TimeSpan format.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the second video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>SplitVideoResult</returns>
+        public SplitVideoResult VideoSplitVideo (DateTime? splitTime, System.IO.Stream inputFile = null, string fileUrl = null, DateTime? timeSpan = null)
+        {
+             ApiResponse<SplitVideoResult> localVarResponse = VideoSplitVideoWithHttpInfo(splitTime, inputFile, fileUrl, timeSpan);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Split a Video into Two Shorter Videos Cuts a video into two videos based on the specified start time. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="splitTime">Specify the desired time at which to split the video in TimeSpan format.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the second video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>ApiResponse of SplitVideoResult</returns>
+        public ApiResponse< SplitVideoResult > VideoSplitVideoWithHttpInfo (DateTime? splitTime, System.IO.Stream inputFile = null, string fileUrl = null, DateTime? timeSpan = null)
+        {
+            // verify the required parameter 'splitTime' is set
+            if (splitTime == null)
+                throw new ApiException(400, "Missing required parameter 'splitTime' when calling VideoApi->VideoSplitVideo");
+
+            var localVarPath = "./video/split";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (splitTime != null) localVarHeaderParams.Add("splitTime", this.Configuration.ApiClient.ParameterToString(splitTime)); // header parameter
+            if (timeSpan != null) localVarHeaderParams.Add("timeSpan", this.Configuration.ApiClient.ParameterToString(timeSpan)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoSplitVideo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<SplitVideoResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (SplitVideoResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SplitVideoResult)));
+        }
+
+        /// <summary>
+        /// Split a Video into Two Shorter Videos Cuts a video into two videos based on the specified start time. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="splitTime">Specify the desired time at which to split the video in TimeSpan format.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the second video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>Task of SplitVideoResult</returns>
+        public async System.Threading.Tasks.Task<SplitVideoResult> VideoSplitVideoAsync (DateTime? splitTime, System.IO.Stream inputFile = null, string fileUrl = null, DateTime? timeSpan = null)
+        {
+             ApiResponse<SplitVideoResult> localVarResponse = await VideoSplitVideoAsyncWithHttpInfo(splitTime, inputFile, fileUrl, timeSpan);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Split a Video into Two Shorter Videos Cuts a video into two videos based on the specified start time. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="splitTime">Specify the desired time at which to split the video in TimeSpan format.</param>
+        /// <param name="inputFile">Input file to perform the operation on. (optional)</param>
+        /// <param name="fileUrl">Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
+        /// <param name="timeSpan">Optional; Specify the desired length of the second video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours. (optional)</param>
+        /// <returns>Task of ApiResponse (SplitVideoResult)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SplitVideoResult>> VideoSplitVideoAsyncWithHttpInfo (DateTime? splitTime, System.IO.Stream inputFile = null, string fileUrl = null, DateTime? timeSpan = null)
+        {
+            // verify the required parameter 'splitTime' is set
+            if (splitTime == null)
+                throw new ApiException(400, "Missing required parameter 'splitTime' when calling VideoApi->VideoSplitVideo");
+
+            var localVarPath = "./video/split";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (fileUrl != null) localVarHeaderParams.Add("fileUrl", this.Configuration.ApiClient.ParameterToString(fileUrl)); // header parameter
+            if (splitTime != null) localVarHeaderParams.Add("splitTime", this.Configuration.ApiClient.ParameterToString(splitTime)); // header parameter
+            if (timeSpan != null) localVarHeaderParams.Add("timeSpan", this.Configuration.ApiClient.ParameterToString(timeSpan)); // header parameter
+            if (inputFile != null) localVarFileParams.Add("inputFile", this.Configuration.ApiClient.ParameterToFile("inputFile", inputFile));
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VideoSplitVideo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<SplitVideoResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (SplitVideoResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SplitVideoResult)));
         }
 
     }

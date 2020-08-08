@@ -5,7 +5,7 @@ The video APIs help you convert, encode, and transcode videos.
 This C# SDK is for the [Cloudmersive Video and Media Services API](https://cloudmersive.com/video-and-media-services-api):
 
 - API version: v1
-- SDK version: 2.0.1
+- SDK version: 2.0.2
 - Build package: io.swagger.codegen.languages.CSharpClientCodegen
 
 <a name="frameworks-supported"></a>
@@ -53,26 +53,20 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Apikey", "Bearer");
 
-            var apiInstance = new VideoApi();
-            var inputFile = new System.IO.Stream(); // System.IO.Stream | Input file to perform the operation on.
-            var fileUrl = fileUrl_example;  // string | Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional) 
-            var maxWidth = 56;  // int? | Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels. (optional) 
-            var maxHeight = 56;  // int? | Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels. (optional) 
-            var preserveAspectRatio = true;  // bool? | Optional; If false, the original video's aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true. (optional) 
-            var frameRate = 56;  // int? | Optional; Specify the frame rate of the output video. Defaults to 24 frames per second. (optional) 
-            var extendProcessingTime = true;  // bool? | Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes. (optional) 
-            var startTime = 2013-10-20T19:20:30+01:00;  // DateTime? | Optional; Specify the desired starting time of the GIF video in TimeSpan format. (optional) 
-            var timeSpan = 2013-10-20T19:20:30+01:00;  // DateTime? | Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes. (optional) 
+            var apiInstance = new AudioApi();
+            var inputFile = new System.IO.Stream(); // System.IO.Stream | Input file to perform the operation on. (optional) 
+            var fileUrl = fileUrl_example;  // string | Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional) 
+            var bitRate = new Object(); // Object | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional) 
 
             try
             {
-                // Convert Video to Animated GIF format.
-                byte[] result = apiInstance.VideoConvertToGif(inputFile, fileUrl, maxWidth, maxHeight, preserveAspectRatio, frameRate, extendProcessingTime, startTime, timeSpan);
+                // Convert Audio File to AAC format.
+                byte[] result = apiInstance.AudioConvertToAac(inputFile, fileUrl, bitRate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling VideoApi.VideoConvertToGif: " + e.Message );
+                Debug.Print("Exception when calling AudioApi.AudioConvertToAac: " + e.Message );
             }
 
         }
@@ -87,17 +81,33 @@ All URIs are relative to *https://api.cloudmersive.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AudioApi* | [**AudioConvertToAac**](docs/AudioApi.md#audioconverttoaac) | **POST** /audio/convert/to/aac | Convert Audio File to AAC format.
+*AudioApi* | [**AudioConvertToM4a**](docs/AudioApi.md#audioconverttom4a) | **POST** /audio/convert/to/m4a | Convert Audio File to M4A format.
+*AudioApi* | [**AudioConvertToMp3**](docs/AudioApi.md#audioconverttomp3) | **POST** /audio/convert/to/mp3 | Convert Audio File to MP3 format.
+*AudioApi* | [**AudioConvertToWav**](docs/AudioApi.md#audioconverttowav) | **POST** /audio/convert/to/wav | Convert Audio File to WAV format.
 *VideoApi* | [**VideoConvertToGif**](docs/VideoApi.md#videoconverttogif) | **POST** /video/convert/to/gif | Convert Video to Animated GIF format.
 *VideoApi* | [**VideoConvertToMov**](docs/VideoApi.md#videoconverttomov) | **POST** /video/convert/to/mov | Convert Video to MOV format.
 *VideoApi* | [**VideoConvertToMp4**](docs/VideoApi.md#videoconverttomp4) | **POST** /video/convert/to/mp4 | Convert Video to MP4 format.
+*VideoApi* | [**VideoConvertToStillFrames**](docs/VideoApi.md#videoconverttostillframes) | **POST** /video/convert/to/still-frames | Convert Video to PNG Still Frames.
 *VideoApi* | [**VideoConvertToWebm**](docs/VideoApi.md#videoconverttowebm) | **POST** /video/convert/to/webm | Convert Video to WEBM format.
+*VideoApi* | [**VideoCutVideo**](docs/VideoApi.md#videocutvideo) | **POST** /video/cut | Cut a Video to a Shorter Length
 *VideoApi* | [**VideoGetInfo**](docs/VideoApi.md#videogetinfo) | **POST** /video/convert/get-info | Get detailed information about a video or audio file
+*VideoApi* | [**VideoResizeVideo**](docs/VideoApi.md#videoresizevideo) | **POST** /video/resize/preserveAspectRatio | Resizes a Video Preserving the Original Aspect Ratio.
+*VideoApi* | [**VideoResizeVideoSimple**](docs/VideoApi.md#videoresizevideosimple) | **POST** /video/resize/target | Resizes a Video without Preserving Aspect Ratio.
+*VideoApi* | [**VideoScanForNsfw**](docs/VideoApi.md#videoscanfornsfw) | **POST** /video/scan/nsfw | Scan a Video for NSFW content.
+*VideoApi* | [**VideoSplitVideo**](docs/VideoApi.md#videosplitvideo) | **POST** /video/split | Split a Video into Two Shorter Videos
 
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
  - [Model.MediaInformation](docs/MediaInformation.md)
+ - [Model.NsfwResult](docs/NsfwResult.md)
+ - [Model.NsfwScannedFrame](docs/NsfwScannedFrame.md)
+ - [Model.SplitVideoResult](docs/SplitVideoResult.md)
+ - [Model.StillFrame](docs/StillFrame.md)
+ - [Model.StillFramesResult](docs/StillFramesResult.md)
+ - [Model.VideoFile](docs/VideoFile.md)
 
 
 <a name="documentation-for-authorization"></a>
