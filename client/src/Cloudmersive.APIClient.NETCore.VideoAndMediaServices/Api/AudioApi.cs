@@ -350,7 +350,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         public ApiResponse< byte[] > AudioConvertToAacWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
         {
 
-            var localVarPath = "./audio/convert/to/aac";
+            var localVarPath = "./video/convert/to/aac";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -429,7 +429,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToAacAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
         {
 
-            var localVarPath = "./audio/convert/to/aac";
+            var localVarPath = "./video/convert/to/aac";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -507,7 +507,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         public ApiResponse< byte[] > AudioConvertToM4aWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
         {
 
-            var localVarPath = "./audio/convert/to/m4a";
+            var localVarPath = "./video/convert/to/m4a";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -586,7 +586,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToM4aAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
         {
 
-            var localVarPath = "./audio/convert/to/m4a";
+            var localVarPath = "./video/convert/to/m4a";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -664,7 +664,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         public ApiResponse< byte[] > AudioConvertToMp3WithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
         {
 
-            var localVarPath = "./audio/convert/to/mp3";
+            var localVarPath = "./video/convert/to/mp3";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -743,7 +743,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToMp3AsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
         {
 
-            var localVarPath = "./audio/convert/to/mp3";
+            var localVarPath = "./video/convert/to/mp3";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -821,7 +821,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         public ApiResponse< byte[] > AudioConvertToWavWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null)
         {
 
-            var localVarPath = "./audio/convert/to/wav";
+            var localVarPath = "./video/convert/to/wav";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -900,7 +900,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToWavAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null)
         {
 
-            var localVarPath = "./audio/convert/to/wav";
+            var localVarPath = "./video/convert/to/wav";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
