@@ -5,7 +5,7 @@ The video APIs help you convert, encode, and transcode videos.
 This C# SDK is for the [Cloudmersive Video and Media Services API](https://cloudmersive.com/video-and-media-services-api):
 
 - API version: v1
-- SDK version: 2.0.3
+- SDK version: 2.0.4
 - Build package: io.swagger.codegen.languages.CSharpClientCodegen
 
 <a name="frameworks-supported"></a>
@@ -56,7 +56,7 @@ namespace Example
             var apiInstance = new AudioApi();
             var inputFile = new System.IO.Stream(); // System.IO.Stream | Input file to perform the operation on. (optional) 
             var fileUrl = fileUrl_example;  // string | Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional) 
-            var bitRate = new Object(); // Object | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional) 
+            var bitRate = 56;  // int? | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional) 
 
             try
             {

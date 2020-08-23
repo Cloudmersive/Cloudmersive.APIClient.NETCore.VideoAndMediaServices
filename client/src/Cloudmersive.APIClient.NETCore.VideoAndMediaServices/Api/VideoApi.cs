@@ -138,7 +138,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
         /// <returns>StillFramesResult</returns>
-        StillFramesResult VideoConvertToStillFrames (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null);
+        StillFramesResult VideoConvertToStillFrames (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, decimal? framesPerSecond = null);
 
         /// <summary>
         /// Convert Video to PNG Still Frames.
@@ -153,7 +153,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
         /// <returns>ApiResponse of StillFramesResult</returns>
-        ApiResponse<StillFramesResult> VideoConvertToStillFramesWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null);
+        ApiResponse<StillFramesResult> VideoConvertToStillFramesWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, decimal? framesPerSecond = null);
         /// <summary>
         /// Convert Video to WEBM format.
         /// </summary>
@@ -314,7 +314,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
         /// <returns>NsfwResult</returns>
-        NsfwResult VideoScanForNsfw (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null);
+        NsfwResult VideoScanForNsfw (System.IO.Stream inputFile = null, string fileUrl = null, decimal? framesPerSecond = null);
 
         /// <summary>
         /// Scan a Video for NSFW content.
@@ -327,7 +327,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
         /// <returns>ApiResponse of NsfwResult</returns>
-        ApiResponse<NsfwResult> VideoScanForNsfwWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null);
+        ApiResponse<NsfwResult> VideoScanForNsfwWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, decimal? framesPerSecond = null);
         /// <summary>
         /// Split a Video into Two Shorter Videos
         /// </summary>
@@ -471,7 +471,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
         /// <returns>Task of StillFramesResult</returns>
-        System.Threading.Tasks.Task<StillFramesResult> VideoConvertToStillFramesAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null);
+        System.Threading.Tasks.Task<StillFramesResult> VideoConvertToStillFramesAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, decimal? framesPerSecond = null);
 
         /// <summary>
         /// Convert Video to PNG Still Frames.
@@ -486,7 +486,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
         /// <returns>Task of ApiResponse (StillFramesResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StillFramesResult>> VideoConvertToStillFramesAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null);
+        System.Threading.Tasks.Task<ApiResponse<StillFramesResult>> VideoConvertToStillFramesAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, decimal? framesPerSecond = null);
         /// <summary>
         /// Convert Video to WEBM format.
         /// </summary>
@@ -647,7 +647,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
         /// <returns>Task of NsfwResult</returns>
-        System.Threading.Tasks.Task<NsfwResult> VideoScanForNsfwAsync (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null);
+        System.Threading.Tasks.Task<NsfwResult> VideoScanForNsfwAsync (System.IO.Stream inputFile = null, string fileUrl = null, decimal? framesPerSecond = null);
 
         /// <summary>
         /// Scan a Video for NSFW content.
@@ -660,7 +660,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
         /// <returns>Task of ApiResponse (NsfwResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NsfwResult>> VideoScanForNsfwAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null);
+        System.Threading.Tasks.Task<ApiResponse<NsfwResult>> VideoScanForNsfwAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, decimal? framesPerSecond = null);
         /// <summary>
         /// Split a Video into Two Shorter Videos
         /// </summary>
@@ -839,10 +839,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -933,10 +930,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1024,10 +1018,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1115,10 +1106,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1205,10 +1193,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1296,10 +1281,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1347,7 +1329,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
         /// <returns>StillFramesResult</returns>
-        public StillFramesResult VideoConvertToStillFrames (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null)
+        public StillFramesResult VideoConvertToStillFrames (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, decimal? framesPerSecond = null)
         {
              ApiResponse<StillFramesResult> localVarResponse = VideoConvertToStillFramesWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, framesPerSecond);
              return localVarResponse.Data;
@@ -1363,7 +1345,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
         /// <returns>ApiResponse of StillFramesResult</returns>
-        public ApiResponse< StillFramesResult > VideoConvertToStillFramesWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null)
+        public ApiResponse< StillFramesResult > VideoConvertToStillFramesWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, decimal? framesPerSecond = null)
         {
 
             var localVarPath = "./video/convert/to/still-frames";
@@ -1431,7 +1413,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
         /// <returns>Task of StillFramesResult</returns>
-        public async System.Threading.Tasks.Task<StillFramesResult> VideoConvertToStillFramesAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null)
+        public async System.Threading.Tasks.Task<StillFramesResult> VideoConvertToStillFramesAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, decimal? framesPerSecond = null)
         {
              ApiResponse<StillFramesResult> localVarResponse = await VideoConvertToStillFramesAsyncWithHttpInfo(inputFile, fileUrl, maxWidth, maxHeight, framesPerSecond);
              return localVarResponse.Data;
@@ -1448,7 +1430,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="maxHeight">Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional)</param>
         /// <returns>Task of ApiResponse (StillFramesResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<StillFramesResult>> VideoConvertToStillFramesAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null)
+        public async System.Threading.Tasks.Task<ApiResponse<StillFramesResult>> VideoConvertToStillFramesAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, decimal? framesPerSecond = null)
         {
 
             var localVarPath = "./video/convert/to/still-frames";
@@ -1555,10 +1537,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1646,10 +1625,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1730,10 +1706,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1812,10 +1785,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2050,10 +2020,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2141,10 +2108,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2231,10 +2195,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2322,10 +2283,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2371,7 +2329,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
         /// <returns>NsfwResult</returns>
-        public NsfwResult VideoScanForNsfw (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null)
+        public NsfwResult VideoScanForNsfw (System.IO.Stream inputFile = null, string fileUrl = null, decimal? framesPerSecond = null)
         {
              ApiResponse<NsfwResult> localVarResponse = VideoScanForNsfwWithHttpInfo(inputFile, fileUrl, framesPerSecond);
              return localVarResponse.Data;
@@ -2385,7 +2343,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
         /// <returns>ApiResponse of NsfwResult</returns>
-        public ApiResponse< NsfwResult > VideoScanForNsfwWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null)
+        public ApiResponse< NsfwResult > VideoScanForNsfwWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, decimal? framesPerSecond = null)
         {
 
             var localVarPath = "./video/scan/nsfw";
@@ -2449,7 +2407,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
         /// <returns>Task of NsfwResult</returns>
-        public async System.Threading.Tasks.Task<NsfwResult> VideoScanForNsfwAsync (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null)
+        public async System.Threading.Tasks.Task<NsfwResult> VideoScanForNsfwAsync (System.IO.Stream inputFile = null, string fileUrl = null, decimal? framesPerSecond = null)
         {
              ApiResponse<NsfwResult> localVarResponse = await VideoScanForNsfwAsyncWithHttpInfo(inputFile, fileUrl, framesPerSecond);
              return localVarResponse.Data;
@@ -2464,7 +2422,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="framesPerSecond">Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional)</param>
         /// <returns>Task of ApiResponse (NsfwResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NsfwResult>> VideoScanForNsfwAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null)
+        public async System.Threading.Tasks.Task<ApiResponse<NsfwResult>> VideoScanForNsfwAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, decimal? framesPerSecond = null)
         {
 
             var localVarPath = "./video/scan/nsfw";
@@ -2566,10 +2524,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2651,10 +2606,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)

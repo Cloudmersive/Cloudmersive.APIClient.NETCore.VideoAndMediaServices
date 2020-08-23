@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="audioconverttoaac"></a>
 # **AudioConvertToAac**
-> byte[] AudioConvertToAac (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+> byte[] AudioConvertToAac (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
 
 Convert Audio File to AAC format.
 
@@ -40,7 +40,7 @@ namespace Example
             var apiInstance = new AudioApi();
             var inputFile = new System.IO.Stream(); // System.IO.Stream | Input file to perform the operation on. (optional) 
             var fileUrl = fileUrl_example;  // string | Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional) 
-            var bitRate = new Object(); // Object | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional) 
+            var bitRate = 56;  // int? | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional) 
 
             try
             {
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inputFile** | **System.IO.Stream**| Input file to perform the operation on. | [optional] 
  **fileUrl** | **string**| Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. | [optional] 
- **bitRate** | [**Object**](Object.md)| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
+ **bitRate** | **int?**| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
 
 ### Return type
 
@@ -76,13 +76,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="audioconverttom4a"></a>
 # **AudioConvertToM4a**
-> byte[] AudioConvertToM4a (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+> byte[] AudioConvertToM4a (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
 
 Convert Audio File to M4A format.
 
@@ -110,7 +110,7 @@ namespace Example
             var apiInstance = new AudioApi();
             var inputFile = new System.IO.Stream(); // System.IO.Stream | Input file to perform the operation on. (optional) 
             var fileUrl = fileUrl_example;  // string | Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional) 
-            var bitRate = new Object(); // Object | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional) 
+            var bitRate = 56;  // int? | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional) 
 
             try
             {
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inputFile** | **System.IO.Stream**| Input file to perform the operation on. | [optional] 
  **fileUrl** | **string**| Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. | [optional] 
- **bitRate** | [**Object**](Object.md)| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
+ **bitRate** | **int?**| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
 
 ### Return type
 
@@ -146,13 +146,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="audioconverttomp3"></a>
 # **AudioConvertToMp3**
-> byte[] AudioConvertToMp3 (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+> byte[] AudioConvertToMp3 (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
 
 Convert Audio File to MP3 format.
 
@@ -180,7 +180,7 @@ namespace Example
             var apiInstance = new AudioApi();
             var inputFile = new System.IO.Stream(); // System.IO.Stream | Input file to perform the operation on. (optional) 
             var fileUrl = fileUrl_example;  // string | Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional) 
-            var bitRate = new Object(); // Object | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional) 
+            var bitRate = 56;  // int? | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional) 
 
             try
             {
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inputFile** | **System.IO.Stream**| Input file to perform the operation on. | [optional] 
  **fileUrl** | **string**| Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. | [optional] 
- **bitRate** | [**Object**](Object.md)| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
+ **bitRate** | **int?**| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
 
 ### Return type
 
@@ -216,13 +216,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="audioconverttowav"></a>
 # **AudioConvertToWav**
-> byte[] AudioConvertToWav (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null)
+> byte[] AudioConvertToWav (System.IO.Stream inputFile = null, string fileUrl = null, decimal? sampleRate = null)
 
 Convert Audio File to WAV format.
 
@@ -250,7 +250,7 @@ namespace Example
             var apiInstance = new AudioApi();
             var inputFile = new System.IO.Stream(); // System.IO.Stream | Input file to perform the operation on. (optional) 
             var fileUrl = fileUrl_example;  // string | Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional) 
-            var sampleRate = new Object(); // Object | Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. (optional) 
+            var sampleRate = 8.14;  // decimal? | Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. (optional) 
 
             try
             {
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inputFile** | **System.IO.Stream**| Input file to perform the operation on. | [optional] 
  **fileUrl** | **string**| Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. | [optional] 
- **sampleRate** | [**Object**](Object.md)| Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. | [optional] 
+ **sampleRate** | **decimal?**| Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. | [optional] 
 
 ### Return type
 
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -249,13 +249,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="videoconverttostillframes"></a>
 # **VideoConvertToStillFrames**
-> StillFramesResult VideoConvertToStillFrames (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, Object framesPerSecond = null)
+> StillFramesResult VideoConvertToStillFrames (System.IO.Stream inputFile = null, string fileUrl = null, int? maxWidth = null, int? maxHeight = null, decimal? framesPerSecond = null)
 
 Convert Video to PNG Still Frames.
 
@@ -285,7 +285,7 @@ namespace Example
             var fileUrl = fileUrl_example;  // string | Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. (optional) 
             var maxWidth = 56;  // int? | Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. (optional) 
             var maxHeight = 56;  // int? | Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. (optional) 
-            var framesPerSecond = new Object(); // Object | Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional) 
+            var framesPerSecond = 8.14;  // decimal? | Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. (optional) 
 
             try
             {
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
  **fileUrl** | **string**| Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB. | [optional] 
  **maxWidth** | **int?**| Optional; Maximum width of the output video, up to the original video width. Defaults to original video width. | [optional] 
  **maxHeight** | **int?**| Optional; Maximum height of the output video, up to the original video width. Defaults to original video height. | [optional] 
- **framesPerSecond** | [**Object**](Object.md)| Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. | [optional] 
+ **framesPerSecond** | **decimal?**| Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames. | [optional] 
 
 ### Return type
 
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -619,7 +619,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -697,13 +697,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="videoscanfornsfw"></a>
 # **VideoScanForNsfw**
-> NsfwResult VideoScanForNsfw (System.IO.Stream inputFile = null, string fileUrl = null, Object framesPerSecond = null)
+> NsfwResult VideoScanForNsfw (System.IO.Stream inputFile = null, string fileUrl = null, decimal? framesPerSecond = null)
 
 Scan a Video for NSFW content.
 
@@ -731,7 +731,7 @@ namespace Example
             var apiInstance = new VideoApi();
             var inputFile = new System.IO.Stream(); // System.IO.Stream | Input file to perform the operation on. (optional) 
             var fileUrl = fileUrl_example;  // string | Optional; URL of a video file being scanned. Use this option for files larger than 2GB. (optional) 
-            var framesPerSecond = new Object(); // Object | Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional) 
+            var framesPerSecond = 8.14;  // decimal? | Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. (optional) 
 
             try
             {
@@ -754,7 +754,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inputFile** | **System.IO.Stream**| Input file to perform the operation on. | [optional] 
  **fileUrl** | **string**| Optional; URL of a video file being scanned. Use this option for files larger than 2GB. | [optional] 
- **framesPerSecond** | [**Object**](Object.md)| Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. | [optional] 
+ **framesPerSecond** | **decimal?**| Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos. | [optional] 
 
 ### Return type
 
@@ -839,7 +839,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

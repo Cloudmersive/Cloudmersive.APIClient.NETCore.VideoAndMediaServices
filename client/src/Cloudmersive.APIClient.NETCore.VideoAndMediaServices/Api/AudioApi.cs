@@ -34,7 +34,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>byte[]</returns>
-        byte[] AudioConvertToAac (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        byte[] AudioConvertToAac (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
 
         /// <summary>
         /// Convert Audio File to AAC format.
@@ -47,7 +47,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> AudioConvertToAacWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        ApiResponse<byte[]> AudioConvertToAacWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
         /// <summary>
         /// Convert Audio File to M4A format.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>byte[]</returns>
-        byte[] AudioConvertToM4a (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        byte[] AudioConvertToM4a (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
 
         /// <summary>
         /// Convert Audio File to M4A format.
@@ -72,7 +72,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> AudioConvertToM4aWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        ApiResponse<byte[]> AudioConvertToM4aWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
         /// <summary>
         /// Convert Audio File to MP3 format.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>byte[]</returns>
-        byte[] AudioConvertToMp3 (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        byte[] AudioConvertToMp3 (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
 
         /// <summary>
         /// Convert Audio File to MP3 format.
@@ -97,7 +97,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> AudioConvertToMp3WithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        ApiResponse<byte[]> AudioConvertToMp3WithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
         /// <summary>
         /// Convert Audio File to WAV format.
         /// </summary>
@@ -109,7 +109,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="sampleRate">Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. (optional)</param>
         /// <returns>byte[]</returns>
-        byte[] AudioConvertToWav (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null);
+        byte[] AudioConvertToWav (System.IO.Stream inputFile = null, string fileUrl = null, decimal? sampleRate = null);
 
         /// <summary>
         /// Convert Audio File to WAV format.
@@ -122,7 +122,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="sampleRate">Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> AudioConvertToWavWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null);
+        ApiResponse<byte[]> AudioConvertToWavWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, decimal? sampleRate = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -136,7 +136,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> AudioConvertToAacAsync (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        System.Threading.Tasks.Task<byte[]> AudioConvertToAacAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
 
         /// <summary>
         /// Convert Audio File to AAC format.
@@ -149,7 +149,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToAacAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToAacAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
         /// <summary>
         /// Convert Audio File to M4A format.
         /// </summary>
@@ -161,7 +161,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> AudioConvertToM4aAsync (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        System.Threading.Tasks.Task<byte[]> AudioConvertToM4aAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
 
         /// <summary>
         /// Convert Audio File to M4A format.
@@ -174,7 +174,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToM4aAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToM4aAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
         /// <summary>
         /// Convert Audio File to MP3 format.
         /// </summary>
@@ -186,7 +186,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> AudioConvertToMp3Async (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        System.Threading.Tasks.Task<byte[]> AudioConvertToMp3Async (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
 
         /// <summary>
         /// Convert Audio File to MP3 format.
@@ -199,7 +199,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToMp3AsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToMp3AsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null);
         /// <summary>
         /// Convert Audio File to WAV format.
         /// </summary>
@@ -211,7 +211,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="sampleRate">Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> AudioConvertToWavAsync (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null);
+        System.Threading.Tasks.Task<byte[]> AudioConvertToWavAsync (System.IO.Stream inputFile = null, string fileUrl = null, decimal? sampleRate = null);
 
         /// <summary>
         /// Convert Audio File to WAV format.
@@ -224,7 +224,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="sampleRate">Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToWavAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToWavAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, decimal? sampleRate = null);
         #endregion Asynchronous Operations
     }
 
@@ -333,7 +333,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>byte[]</returns>
-        public byte[] AudioConvertToAac (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public byte[] AudioConvertToAac (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
              ApiResponse<byte[]> localVarResponse = AudioConvertToAacWithHttpInfo(inputFile, fileUrl, bitRate);
              return localVarResponse.Data;
@@ -347,7 +347,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > AudioConvertToAacWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public ApiResponse< byte[] > AudioConvertToAacWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
 
             var localVarPath = "./video/convert/to/aac";
@@ -366,10 +366,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -411,7 +408,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> AudioConvertToAacAsync (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public async System.Threading.Tasks.Task<byte[]> AudioConvertToAacAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
              ApiResponse<byte[]> localVarResponse = await AudioConvertToAacAsyncWithHttpInfo(inputFile, fileUrl, bitRate);
              return localVarResponse.Data;
@@ -426,7 +423,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToAacAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToAacAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
 
             var localVarPath = "./video/convert/to/aac";
@@ -445,10 +442,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -490,7 +484,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>byte[]</returns>
-        public byte[] AudioConvertToM4a (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public byte[] AudioConvertToM4a (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
              ApiResponse<byte[]> localVarResponse = AudioConvertToM4aWithHttpInfo(inputFile, fileUrl, bitRate);
              return localVarResponse.Data;
@@ -504,7 +498,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > AudioConvertToM4aWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public ApiResponse< byte[] > AudioConvertToM4aWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
 
             var localVarPath = "./video/convert/to/m4a";
@@ -523,10 +517,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -568,7 +559,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> AudioConvertToM4aAsync (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public async System.Threading.Tasks.Task<byte[]> AudioConvertToM4aAsync (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
              ApiResponse<byte[]> localVarResponse = await AudioConvertToM4aAsyncWithHttpInfo(inputFile, fileUrl, bitRate);
              return localVarResponse.Data;
@@ -583,7 +574,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToM4aAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToM4aAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
 
             var localVarPath = "./video/convert/to/m4a";
@@ -602,10 +593,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -647,7 +635,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>byte[]</returns>
-        public byte[] AudioConvertToMp3 (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public byte[] AudioConvertToMp3 (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
              ApiResponse<byte[]> localVarResponse = AudioConvertToMp3WithHttpInfo(inputFile, fileUrl, bitRate);
              return localVarResponse.Data;
@@ -661,7 +649,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > AudioConvertToMp3WithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public ApiResponse< byte[] > AudioConvertToMp3WithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
 
             var localVarPath = "./video/convert/to/mp3";
@@ -680,10 +668,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -725,7 +710,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> AudioConvertToMp3Async (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public async System.Threading.Tasks.Task<byte[]> AudioConvertToMp3Async (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
              ApiResponse<byte[]> localVarResponse = await AudioConvertToMp3AsyncWithHttpInfo(inputFile, fileUrl, bitRate);
              return localVarResponse.Data;
@@ -740,7 +725,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="bitRate">Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToMp3AsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object bitRate = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToMp3AsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, int? bitRate = null)
         {
 
             var localVarPath = "./video/convert/to/mp3";
@@ -759,10 +744,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -804,7 +786,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="sampleRate">Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. (optional)</param>
         /// <returns>byte[]</returns>
-        public byte[] AudioConvertToWav (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null)
+        public byte[] AudioConvertToWav (System.IO.Stream inputFile = null, string fileUrl = null, decimal? sampleRate = null)
         {
              ApiResponse<byte[]> localVarResponse = AudioConvertToWavWithHttpInfo(inputFile, fileUrl, sampleRate);
              return localVarResponse.Data;
@@ -818,7 +800,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="sampleRate">Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public ApiResponse< byte[] > AudioConvertToWavWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null)
+        public ApiResponse< byte[] > AudioConvertToWavWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, decimal? sampleRate = null)
         {
 
             var localVarPath = "./video/convert/to/wav";
@@ -837,10 +819,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -882,7 +861,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="sampleRate">Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. (optional)</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> AudioConvertToWavAsync (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null)
+        public async System.Threading.Tasks.Task<byte[]> AudioConvertToWavAsync (System.IO.Stream inputFile = null, string fileUrl = null, decimal? sampleRate = null)
         {
              ApiResponse<byte[]> localVarResponse = await AudioConvertToWavAsyncWithHttpInfo(inputFile, fileUrl, sampleRate);
              return localVarResponse.Data;
@@ -897,7 +876,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
         /// <param name="fileUrl">Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. (optional)</param>
         /// <param name="sampleRate">Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. (optional)</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToWavAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, Object sampleRate = null)
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> AudioConvertToWavAsyncWithHttpInfo (System.IO.Stream inputFile = null, string fileUrl = null, decimal? sampleRate = null)
         {
 
             var localVarPath = "./video/convert/to/wav";
@@ -916,10 +895,7 @@ namespace Cloudmersive.APIClient.NETCore.VideoAndMediaServices.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
