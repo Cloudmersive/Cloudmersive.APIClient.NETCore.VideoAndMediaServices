@@ -5,7 +5,7 @@ The video APIs help you convert, encode, and transcode videos.
 This C# SDK is for the [Cloudmersive Video and Media Services API](https://cloudmersive.com/video-and-media-services-api):
 
 - API version: v1
-- SDK version: 2.0.4
+- SDK version: 2.0.5
 - Build package: io.swagger.codegen.languages.CSharpClientCodegen
 
 <a name="frameworks-supported"></a>
